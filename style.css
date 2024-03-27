@@ -829,7 +829,7 @@ footer {
 
     .portfolio-img {
         border-radius: 3vw;
-        box-shadow: 0 1vw 1.25vw 0 rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0.5vw 0.75vw 0 rgba(0, 0, 0, 0.25);
     }
 
     .portfolio-info {
