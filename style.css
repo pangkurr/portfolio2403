@@ -705,7 +705,7 @@ footer {
     }
 
     section {
-        padding: 5vw 0px;
+        padding: 5vw 2.5vw;
     }
 
     .section-title {
@@ -884,6 +884,7 @@ footer {
 
     .portfolio-contents {
         gap: 5vw;
+        padding:0 5vw;
     }
 
     .portfolio-filter {

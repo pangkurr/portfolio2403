@@ -112,6 +112,8 @@ window.addEventListener("load", () => { //pc일때 첫 메뉴 포커스
     menuLine.style.left = ((activeSpanRect.left - pcHeaderRect.left) / pcHeaderRect.width) * 100 + "%";
     if(isMobile){
         menuLine.style.display = "none";
+        pcHeader.style.opacity = "0"; // 기본값으로 초기화
+        pcHeader.style.transform = "translateX(150%)"; // 기본값으로 초기화
     }else{
         menuLine.style.display = "block";
     }
