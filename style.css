@@ -91,7 +91,9 @@ body::-webkit-scrollbar {
 }
 
 section {
+    width:100%;
     padding: 90px 0px;
+    overflow:hidden;
 }
 
 .section-title {
@@ -137,13 +139,18 @@ header .header-logo {
     font-size: 2em;
     font-family: "Pacifico", cursive;
     cursor: pointer;
+    z-index:1;
 }
 
 header .header-menu {
     position: relative;
     height: 100%;
+    z-index:1;
 }
-
+header .header-menu.mobile{
+    display: none;
+    z-index:0;
+}
 header .header-menu .menu-focus {
     width: 30px;
     height: 3px;
@@ -224,6 +231,36 @@ header .header-menu ul li:hover span::before {
     }
 }
 
+.menu-bar{
+    display: none;
+    position: relative;
+    cursor: pointer;
+    z-index:1;
+}
+.menu-bar .bar-line{
+    position: relative;
+    width:35px;
+    height:3px;
+    margin-bottom: 10px;
+    background: #000;
+    border-radius: 1rem;
+    transition: transform .25s linear, opacity .25s linear;
+}
+.menu-bar .bar-line:last-child{
+    margin-bottom: auto;
+}
+.menu-bar.active .bar-line:nth-child(1){
+    transform-origin:bottom right;
+    transform: rotate(-45deg);
+}
+.menu-bar.active .bar-line:nth-child(2){
+    transform: translateX(50px);
+    opacity: 0;
+}
+.menu-bar.active .bar-line:nth-child(3){
+    transform-origin:top right;
+    transform: rotate(45deg);
+}
 section {
     position: relative;
     display: flex;
@@ -282,7 +319,7 @@ section.home {
 .mouseicon {
     position: absolute;
     bottom: 2.5%;
-    left: 50%;
+    left: 48.5%;
     transform: translateX(-50%);
     width: fit-content;
     height: fit-content;
@@ -664,7 +701,7 @@ footer {
     }
 
     .page-inner {
-        width: 80vw;
+        width: 100%;
     }
 
     section {
@@ -680,17 +717,34 @@ footer {
     /* 네비게이션 */
     header {
         top: 2vw;
-        width: 80vw;
+        width: 100%;
         height: 8vw;
         padding: 0 3vw;
     }
-
+    header.fixed .menu-bar .bar-line{
+        background: #fff;
+    }
     header .header-logo {
         font-size: 2em;
     }
-
+    header.zero .header-menu { 
+        transition: opacity .25s linear,transform .25s linear;
+        opacity: 0;
+        transform: translateX(50%);
+    }
+    header.fixed .header-menu.mobile{
+        display: flex;
+        position: absolute;
+        top:100%;
+        left: 0%;
+        width:100%;
+        height:fit-content;
+        opacity: 0;
+        transform: translateY(-50%);
+        transition: opacity .25s linear,transform .25s linear;
+        background: rgba(0, 0, 0, 0.75);
+    }
     header .header-menu .menu-focus {
-        width: 30px;
         height: 0.5vw;
         bottom: 10%;
     }
@@ -703,6 +757,26 @@ footer {
 
     header .header-menu ul li {
         padding: 0 1vw;
+    }
+    
+    header .header-menu.mobile ul{
+        width:100%;
+        flex-direction: column;
+        gap: 0;
+        height:auto;
+    }
+    header .header-menu.mobile ul li{
+        width:100%;
+        height:15vw;
+        font-size: 2em;
+    }
+    .menu-bar{
+        display: block;
+    }
+    .menu-bar .bar-line{
+        width: 6.25vw;
+        height: 0.75vw;
+        margin-bottom: 1.5vw;
     }
 
     /* 메인 홈 */
@@ -770,7 +844,7 @@ footer {
     }
 
     section.process .page-inner .section-title {
-        margin-bottom: 5vw;
+        margin-bottom: 3vw;
     }
 
     .process-line {
@@ -805,7 +879,7 @@ footer {
 
     /* portfolio */
     section.portfolio .page-inner .section-title {
-        margin-bottom: 5vw;
+        margin-bottom: 3vw;
     }
 
     .portfolio-contents {
